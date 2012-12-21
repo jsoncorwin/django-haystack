@@ -146,7 +146,7 @@ class Command(LabelCommand):
         end_date = options.get('end_date')
 
         if age is not None:
-            self.start_date = now() - timedelta(hours=int(age))
+            self.start_date = now() - timedelta(minutes=int(age))
             options['start_date'] = self.start_date
 
         if start_date is not None:

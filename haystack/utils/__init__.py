@@ -3,8 +3,7 @@ from haystack.constants import ID, DJANGO_CT, DJANGO_ID
 from haystack.utils.highlighting import Highlighter
 
 
-IDENTIFIER_REGEX = re.compile('^[\w\d_]+\.[\w\d_]+\.[\d\w]+$')
-
+IDENTIFIER_REGEX = re.compile('^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$')
 
 def get_model_ct(model):
     return "%s.%s" % (model._meta.app_label, model._meta.module_name)

@@ -2,6 +2,7 @@ from datetime import timedelta
 from optparse import make_option
 import os
 import warnings
+import uuid
 
 from django import db
 from django.conf import settings
@@ -96,7 +97,7 @@ def do_remove(backend, index, model, pks_seen, start, upper_bound, verbosity=1):
             if verbosity >= 2:
                 print "  removing %s." % result.pk
 
-            backend.remove(".".join([result.app_label, result.model_name, str(result.pk)]))
+            backend.remove(str(uuid.UUID(str(result.pk))))
 
 
 class Command(LabelCommand):

@@ -254,8 +254,8 @@ class Command(LabelCommand):
                 if self.start_date or self.end_date or total <= 0:
                     # They're using a reduced set, which may not incorporate
                     # all pks. Rebuild the list with everything.
-                    qs = index.index_queryset().values_list('pk', flat=True)
-                    pks_seen = set([smart_str(pk) for pk in qs])
+                    qs = index.index_queryset().values_list('id', flat=True)
+                    pks_seen = set([smart_str(id) for id in qs])
                     total = len(pks_seen)
 
                 if self.workers > 0:

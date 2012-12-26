@@ -92,12 +92,12 @@ def do_remove(backend, index, model, pks_seen, start, upper_bound, verbosity=1):
     # Iterate over those results.
     for result in stuff_in_the_index:
         # Be careful not to hit the DB.
-        if not smart_str(result.pk) in pks_seen:
+        if not smart_str(result.id) in pks_seen:
             # The id is NOT in the small_cache_qs, issue a delete.
             if verbosity >= 2:
-                print "  removing %s." % result.pk
+                print "  removing %s." % result.id
 
-            backend.remove(str(uuid.UUID(str(result.pk))))
+            backend.remove(str(uuid.UUID(str(result.id))))
 
 
 class Command(LabelCommand):

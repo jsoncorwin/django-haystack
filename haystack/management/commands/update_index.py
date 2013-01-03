@@ -229,7 +229,7 @@ class Command(LabelCommand):
             total = qs.count()
 
             if self.verbosity >= 1:
-                print "Indexing %d %s." % (total, smart_str(model._meta.verbose_name_plural))
+                print "%s: Indexing %d %s." % (now(), total, smart_str(model._meta.verbose_name_plural))
 
             pks_seen = set([smart_str(pk) for pk in qs.values_list('pk', flat=True)])
             batch_size = self.batchsize or self.backend.batch_size
